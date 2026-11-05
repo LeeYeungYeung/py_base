@@ -1,6 +1,6 @@
 from random import choice
 
-NUM=[0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e']
+NUM = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e']
 
 
 class Lottery:
@@ -13,8 +13,8 @@ class Lottery:
     def get_l_number(self):
         return self.l_number
 
-def get_champion_num():
 
+def get_champion_num():
     champion_num = []
     for _ in range(4):
         champion_num.append(choice(NUM))
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     lottery = Lottery()
     count = 0
     while lottery.l_number != get_champion_num():
-        count +=1
+        count += 1
         print(f"{lottery.l_number} is not the champion! \nchampion_num = {get_champion_num()}")
         lottery = Lottery()
 

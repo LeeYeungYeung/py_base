@@ -2,7 +2,14 @@ from pathlib import Path
 import json
 
 
-def get_user_info(path,name=None):
+def get_favorite_number(path):
+    if path.exists():
+        content = path.read_text()
+        data = json.loads(content)
+        return data
+
+
+def get_user_info(path, name=None):
     if path.exists():
         contents = path.read_text()
         print(contents)
@@ -15,15 +22,27 @@ def get_user_info(path,name=None):
         except ValueError:
             pass
         return None
+
     else:
         return None
+
+
+def print_favorite_number():
+    path = Path('luck_numbers.json')
+    number = get_favorite_number(path)
+    if number:
+        print(f"I know your favorite number: It's {number}")
+    else:
+        number = input("Please enter your favorite number: ")
+        contents = json.dumps(number)
+        path.write_text(contents)
 
 
 def greet_num():
     path = Path('luck_number.json')
     login_user = input("please enter your username:\n")
 
-    user = get_user_info(path,login_user)
+    user = get_user_info(path, login_user)
     if user:
         print(f'your info : {user}')
     else:
