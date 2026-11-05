@@ -1,19 +1,22 @@
+import pytest
 from survey import AnonymousSurvey
 
-
-def test_store_single_question():
-    question = "What language did you first learn to speak?"
+@pytest.fixture
+def language_survey():
+    question = "What language did you learn to speak?"
     language_answer = AnonymousSurvey(question)
-    language_answer.store_response("English")
-    assert "English" in language_answer.responses
+    return language_answer
+
+def test_store_single_question(language_survey):
+
+    language_survey.store_response("English")
+    assert "English" in language_survey.responses
 
 
-def test_store_three_responses():
-    question = "What language did you first learn to speak?"
-    language_answer = AnonymousSurvey(question)
+def test_store_three_responses(language_survey):
+
     responses = ['English', 'Spanish', 'French']
     for response in responses:
-        language_answer.store_response(response)
-
+        language_survey.store_response(response)
     for response in responses:
-        assert response in language_answer.responses
+        assert response in language_survey.responses
