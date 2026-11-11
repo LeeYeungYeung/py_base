@@ -23,6 +23,7 @@ class AlienInvasion:
             self._update_screen()
             self.clock.tick(60)
 
+
     def _check_events(self):
         """响应按键和鼠标事件"""
         for event in pygame.event.get():
@@ -32,6 +33,7 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+
 
     def _check_keydown_events(self, event):
         if event.key == pygame.K_RIGHT:
@@ -47,6 +49,7 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+
 
     def _update_screen(self):
         """update screen"""
